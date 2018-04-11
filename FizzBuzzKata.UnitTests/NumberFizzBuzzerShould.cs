@@ -34,6 +34,14 @@ namespace FizzBuzzKata.UnitTests
             Assert.AreEqual(BUZZ, response);
         }
 
+        [TestCase(1)]
+        [TestCase(4)]
+        [TestCase(8)]
+        public void ReturnNumberWhenNotDivisibleByThreeOrFive(int value)
+        {
+            var response = numberFizzBuzzer.Stringify(value);
+            Assert.AreEqual(value.ToString(), response);
+        }
 
     }
 }

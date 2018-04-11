@@ -4,9 +4,17 @@
     {
         public string Stringify(int numberToCheck)
         {
-            if(numberToCheck%3 == 0)
+            if (numberToCheck % 3 == 0)
+            {
                 return "Fizz";
-            return "Buzz";
+            }
+
+            if (numberToCheck % 5 == 0)
+            {
+                return "Buzz";
+            }
+
+            return numberToCheck.ToString();
         }
     }
 }
