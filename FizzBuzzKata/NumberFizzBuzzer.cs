@@ -1,20 +1,30 @@
-﻿namespace FizzBuzzKata
+﻿using System.Text;
+
+namespace FizzBuzzKata
 {
     public class NumberFizzBuzzer
     {
         public string Stringify(int numberToCheck)
         {
-            if (numberToCheck % 3 == 0)
+            var builder = new StringBuilder();
+
+            if (numberToCheck.IsDivisibleBy(3))
             {
-                return "Fizz";
+                builder.Append("Fizz");
             }
 
-            if (numberToCheck % 5 == 0)
+            if (numberToCheck.IsDivisibleBy(5))
             {
-                return "Buzz";
+                builder.Append("Buzz");
             }
 
-            return numberToCheck.ToString();
+            if (builder.Length == 0)
+            {
+                builder.Append(numberToCheck.ToString());
+            }
+
+            return builder.ToString();
+
         }
     }
 }
