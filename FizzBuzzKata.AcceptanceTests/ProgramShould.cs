@@ -9,7 +9,7 @@ namespace FizzBuzzKata.AcceptanceTests
 {
     [TestFixture]
     [UseReporter(typeof(NUnitReporter))]
-    public class ApprovalTest
+    public class ProgramShould
     {
         [Test]
         public void TwentyValues()

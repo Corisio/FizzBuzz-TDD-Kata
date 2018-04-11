@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FizzBuzzKata
 {
@@ -6,7 +8,12 @@ namespace FizzBuzzKata
     {
         public static void Main(string[] args)
         {
-            throw new NotImplementedException();
+            FizzBuzzer fizzBuzzer = new FizzBuzzer();
+
+            foreach (var stringifiedValue in fizzBuzzer.GetStrings(20))
+            {
+                Console.WriteLine(stringifiedValue);
+            }
         }
     }
 }
