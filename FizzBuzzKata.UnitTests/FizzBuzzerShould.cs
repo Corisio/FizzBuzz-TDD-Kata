@@ -33,5 +33,26 @@ namespace FizzBuzzKata.UnitTests
             Assert.IsNotEmpty(response);
             Assert.AreEqual(expectedSize, response.Count());
         }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(5)]
+        [TestCase(6)]
+        [TestCase(8)]
+        [TestCase(9)]
+        [TestCase(10)]
+        [TestCase(15)]
+        [TestCase(20)]
+        public void ReturnFizzOrBuzzOrFizzBuzzOrTheOrdinalOfTheElementAsString(int value)
+        {
+            IList<string> response = new List<string>(fizzBuzzer.GetStrings(value));
+            for (int i = 0; i < value; i++)
+            {
+                var acceptableValues = new List<string>() { "Fizz", "Buzz", "FizzBuzz", (i + 1).ToString() };
+                Assert.IsTrue(acceptableValues.Contains(response[i]));
+            }
+
+        }
     }
 }

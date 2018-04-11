@@ -6,10 +6,11 @@ namespace FizzBuzzKata
     {
         public IEnumerable<string> GetStrings(int amount)
         {
+            var numberFizzBuzzer = new NumberFizzBuzzer();
             var result = new List<string>();
-            for (int i = 0; i < amount; i++)
+            for (int i = 1; i <= amount; i++)
             {
-                result.Add(null);        
+                result.Add(numberFizzBuzzer.Stringify(i));        
             }
             return result;
         }
