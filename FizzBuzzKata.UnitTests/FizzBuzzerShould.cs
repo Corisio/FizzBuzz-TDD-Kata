@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using FizzBuzzKata.UnitTests.Helpers;
+using Moq;
 using NUnit.Framework;
 
 namespace FizzBuzzKata.UnitTests
@@ -8,11 +10,17 @@ namespace FizzBuzzKata.UnitTests
     public class FizzBuzzerShould
     {
         private static FizzBuzzer fizzBuzzer;
+        private static IIntegerProcessor integerProcessor;
+        private static Mock<IIntegerProcessor> mockedIntegerProcessor;
 
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
+        [SetUp]
+        public void SetUp()
         {
-            fizzBuzzer = new FizzBuzzer();
+            integerProcessor = new BasicIntegerProcessor();
+            mockedIntegerProcessor = new Mock<IIntegerProcessor>();
+            mockedIntegerProcessor.Setup(c => c.Stringify(It.IsAny<int>()))
+                .Returns(string.Empty);
+            fizzBuzzer = new FizzBuzzer(mockedIntegerProcessor.Object);
         }
 
         [TestCase(-1)]
@@ -44,13 +52,13 @@ namespace FizzBuzzKata.UnitTests
         [TestCase(10)]
         [TestCase(15)]
         [TestCase(20)]
-        public void ReturnFizzOrBuzzOrFizzBuzzOrTheOrdinalOfTheElementAsString(int value)
+        public void ReturnsTheOrdinalOfTheElementAsString(int value)
         {
+            fizzBuzzer = new FizzBuzzer(integerProcessor);
             IList<string> response = new List<string>(fizzBuzzer.GetStrings(value));
             for (int i = 0; i < value; i++)
             {
-                var acceptableValues = new List<string>() { "Fizz", "Buzz", "FizzBuzz", (i + 1).ToString() };
-                Assert.IsTrue(acceptableValues.Contains(response[i]));
+                Assert.AreEqual(integerProcessor.Stringify(i + 1), response[i]);
             }
 
         }

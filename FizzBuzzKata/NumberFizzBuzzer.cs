@@ -2,7 +2,7 @@
 
 namespace FizzBuzzKata
 {
-    public class NumberFizzBuzzer
+    public class NumberFizzBuzzer : IIntegerProcessor
     {
         public string Stringify(int numberToCheck)
         {

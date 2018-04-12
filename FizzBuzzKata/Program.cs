@@ -8,7 +8,7 @@ namespace FizzBuzzKata
     {
         public static void Main(string[] args)
         {
-            FizzBuzzer fizzBuzzer = new FizzBuzzer();
+            FizzBuzzer fizzBuzzer = new FizzBuzzer(new NumberFizzBuzzer());
 
             foreach (var stringifiedValue in fizzBuzzer.GetStrings(20))
             {
